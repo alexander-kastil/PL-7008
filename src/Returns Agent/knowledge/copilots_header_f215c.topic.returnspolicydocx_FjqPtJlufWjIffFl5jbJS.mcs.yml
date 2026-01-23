@@ -1,6 +1,0 @@
-# Name: returns-policy.docx
-# Information about out returns policy
-kind: KnowledgeSourceConfiguration
-source:
-  kind: SharePointSearchSource
-  site: https://integrationsonline.sharepoint.com/sites/copilot-demo/Instructions/returns-policy.docx
