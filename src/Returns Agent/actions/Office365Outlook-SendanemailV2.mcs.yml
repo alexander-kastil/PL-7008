@@ -1,0 +1,20 @@
+# Name: Office 365 Outlook - Send an email (V2)
+kind: TaskDialog
+response:
+  activity:
+  mode: Generated
+
+modelDisplayName: Send an email (V2)
+modelDescription: This operation sends an email message that is well formatted and uses litereal line breaks
+outputs:
+  - propertyName: Response
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: copilots_header_f215c.shared_office365.shared-office365-cbf732d4-a10f-4e45-8888-1bc43d1029ca
+  connectionProperties:
+    mode: Invoker
+
+  operationId: SendEmailV2
+
+outputMode: All

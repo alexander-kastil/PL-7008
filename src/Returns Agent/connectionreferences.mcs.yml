@@ -1,0 +1,5 @@
+﻿connectionReferences:
+  - connectionReferenceLogicalName: copilots_header_f215c.shared_office365.shared-office365-cbf732d4-a10f-4e45-8888-1bc43d1029ca
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_office365
+  - connectionReferenceLogicalName: copilots_header_f215c.shared_office365.shared-office365-cbf732d4-a10f-4e45-8888-1bc43d1029ca
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_office365
