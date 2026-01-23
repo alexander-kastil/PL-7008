@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace HRMCPServer.Data;
 
-public static class CandidateDbInitializer
+public static class EmployeeDbInitializer
 {
     public static async Task InitializeAsync(IServiceProvider services, CancellationToken cancellationToken = default)
     {
@@ -12,27 +12,27 @@ public static class CandidateDbInitializer
         var scopedServices = scope.ServiceProvider;
 
         var logger = scopedServices.GetRequiredService<ILoggerFactory>()
-            .CreateLogger(typeof(CandidateDbInitializer));
-        var context = scopedServices.GetRequiredService<CandidateDbContext>();
+            .CreateLogger(typeof(EmployeeDbInitializer));
+        var context = scopedServices.GetRequiredService<EmployeeDbContext>();
         await context.Database.EnsureCreatedAsync(cancellationToken);
 
-        if (await context.Candidates.AnyAsync(cancellationToken))
+        if (await context.Employees.AnyAsync(cancellationToken))
         {
-            logger.LogInformation("Candidate database already contains data; skipping seed.");
+            logger.LogInformation("Employee database already contains data; skipping seed.");
             return;
         }
 
-        var seedCandidates = GetSeedCandidates();
+        var seedEmployees = GetSeedEmployees();
 
-        await context.Candidates.AddRangeAsync(seedCandidates, cancellationToken);
+        await context.Employees.AddRangeAsync(seedEmployees, cancellationToken);
         await context.SaveChangesAsync(cancellationToken);
 
-        logger.LogInformation("Seeded {Count} candidates into the database.", seedCandidates.Count);
+        logger.LogInformation("Seeded {Count} employees into the database.", seedEmployees.Count);
     }
 
-    private static List<Candidate> GetSeedCandidates() => new()
+    private static List<Employee> GetSeedEmployees() => new()
     {
-        new Candidate
+        new Employee
         {
             FirstName = "Carlos",
             LastName = "Gomez",
@@ -41,7 +41,7 @@ public static class CandidateDbInitializer
             Skills = new List<string> { "Sous Chef", "Menu Planning", "Food Safety", "Inventory Management" },
             CurrentRole = "Sous Chef"
         },
-        new Candidate
+        new Employee
         {
             FirstName = "Marie",
             LastName = "Dubois",
@@ -50,7 +50,7 @@ public static class CandidateDbInitializer
             Skills = new List<string> { "Pastry Chef", "Dessert Creation", "Baking", "Team Leadership" },
             CurrentRole = "Pastry Chef"
         },
-        new Candidate
+        new Employee
         {
             FirstName = "Luca",
             LastName = "Rossi",
@@ -59,7 +59,7 @@ public static class CandidateDbInitializer
             Skills = new List<string> { "Head Waiter", "Customer Service", "Wine Pairing", "Table Management" },
             CurrentRole = "Head Waiter"
         },
-        new Candidate
+        new Employee
         {
             FirstName = "Anna",
             LastName = "Schmidt",
@@ -68,7 +68,7 @@ public static class CandidateDbInitializer
             Skills = new List<string> { "Restaurant Manager", "Staff Scheduling", "Budgeting", "Event Coordination" },
             CurrentRole = "Restaurant Manager"
         },
-        new Candidate
+        new Employee
         {
             FirstName = "Sofia",
             LastName = "Fernandez",
@@ -77,7 +77,7 @@ public static class CandidateDbInitializer
             Skills = new List<string> { "Bartender", "Mixology", "Inventory Control", "Customer Engagement" },
             CurrentRole = "Bartender"
         },
-        new Candidate
+        new Employee
         {
             FirstName = "Kenji",
             LastName = "Tanaka",
@@ -86,7 +86,7 @@ public static class CandidateDbInitializer
             Skills = new List<string> { "Sushi Chef", "Knife Skills", "Seafood Preparation", "Quality Control" },
             CurrentRole = "Sushi Chef"
         },
-        new Candidate
+        new Employee
         {
             FirstName = "Olga",
             LastName = "Ivanova",
@@ -95,7 +95,7 @@ public static class CandidateDbInitializer
             Skills = new List<string> { "Hostess", "Reservation Management", "Multilingual Communication", "Conflict Resolution" },
             CurrentRole = "Hostess"
         },
-        new Candidate
+        new Employee
         {
             FirstName = "Ahmed",
             LastName = "Hassan",

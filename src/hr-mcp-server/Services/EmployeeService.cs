@@ -4,52 +4,52 @@ using Microsoft.EntityFrameworkCore;
 namespace HRMCPServer.Services;
 
 /// <summary>
-/// Service for managing candidate data in memory
+/// Service for managing employee data in memory.
 /// </summary>
-public class CandidateService : ICandidateService
+public class EmployeeService : IEmployeeService
 {
-    private readonly CandidateDbContext _dbContext;
-    private readonly ILogger<CandidateService> _logger;
+    private readonly EmployeeDbContext _dbContext;
+    private readonly ILogger<EmployeeService> _logger;
 
-    public CandidateService(
-        CandidateDbContext dbContext,
-        ILogger<CandidateService> logger)
+    public EmployeeService(
+        EmployeeDbContext dbContext,
+        ILogger<EmployeeService> logger)
     {
         _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public async Task<List<Candidate>> GetAllCandidatesAsync()
+    public async Task<List<Employee>> GetAllEmployeesAsync()
     {
-        return await _dbContext.Candidates
+        return await _dbContext.Employees
             .AsNoTracking()
             .OrderBy(c => c.LastName)
             .ThenBy(c => c.FirstName)
             .ToListAsync();
     }
 
-    public async Task<bool> AddCandidateAsync(Candidate candidate)
+    public async Task<bool> AddEmployeeAsync(Employee employee)
     {
-        if (candidate == null)
-            throw new ArgumentNullException(nameof(candidate));
+        if (employee == null)
+            throw new ArgumentNullException(nameof(employee));
 
-        var email = candidate.Email.Trim();
+        var email = employee.Email.Trim();
 
-        if (await _dbContext.Candidates.AnyAsync(c => c.Email == email))
+        if (await _dbContext.Employees.AnyAsync(c => c.Email == email))
         {
             return false;
         }
 
-        candidate.Email = email;
+        employee.Email = email;
 
-        await _dbContext.Candidates.AddAsync(candidate);
+        await _dbContext.Employees.AddAsync(employee);
         await _dbContext.SaveChangesAsync();
 
-        _logger.LogInformation("Added new candidate: {FullName} ({Email})", candidate.FullName, candidate.Email);
+        _logger.LogInformation("Added new employee: {FullName} ({Email})", employee.FullName, employee.Email);
         return true;
     }
 
-    public async Task<bool> UpdateCandidateAsync(string email, Action<Candidate> updateAction)
+    public async Task<bool> UpdateEmployeeAsync(string email, Action<Employee> updateAction)
     {
         if (string.IsNullOrWhiteSpace(email))
             throw new ArgumentException("Email cannot be null or empty", nameof(email));
@@ -59,57 +59,57 @@ public class CandidateService : ICandidateService
 
         var normalizedEmail = email.Trim();
 
-        var candidate = await _dbContext.Candidates
+        var employee = await _dbContext.Employees
             .FirstOrDefaultAsync(c => c.Email == normalizedEmail);
 
-        if (candidate == null)
+        if (employee == null)
         {
             return false;
         }
 
-        updateAction(candidate);
+        updateAction(employee);
         await _dbContext.SaveChangesAsync();
 
-        _logger.LogInformation("Updated candidate with email: {Email}", normalizedEmail);
+        _logger.LogInformation("Updated employee with email: {Email}", normalizedEmail);
         return true;
     }
 
-    public async Task<bool> RemoveCandidateAsync(string email)
+    public async Task<bool> RemoveEmployeeAsync(string email)
     {
         if (string.IsNullOrWhiteSpace(email))
             throw new ArgumentException("Email cannot be null or empty", nameof(email));
 
         var normalizedEmail = email.Trim();
 
-        var candidate = await _dbContext.Candidates
+        var employee = await _dbContext.Employees
             .FirstOrDefaultAsync(c => c.Email == normalizedEmail);
 
-        if (candidate == null)
+        if (employee == null)
         {
             return false;
         }
 
-        _dbContext.Candidates.Remove(candidate);
+        _dbContext.Employees.Remove(employee);
         await _dbContext.SaveChangesAsync();
 
-        _logger.LogInformation("Removed candidate with email: {Email}", normalizedEmail);
+        _logger.LogInformation("Removed employee with email: {Email}", normalizedEmail);
         return true;
     }
 
-    public async Task<List<Candidate>> SearchCandidatesAsync(string searchTerm)
+    public async Task<List<Employee>> SearchEmployeesAsync(string searchTerm)
     {
         if (string.IsNullOrWhiteSpace(searchTerm))
         {
-            return await GetAllCandidatesAsync();
+            return await GetAllEmployeesAsync();
         }
 
         var searchTermLower = searchTerm.Trim().ToLowerInvariant();
 
-        var candidates = await _dbContext.Candidates
+        var employees = await _dbContext.Employees
             .AsNoTracking()
             .ToListAsync();
 
-        var matchingCandidates = candidates.Where(c =>
+        var matchingEmployees = employees.Where(c =>
             c.FirstName.ToLowerInvariant().Contains(searchTermLower) ||
             c.LastName.ToLowerInvariant().Contains(searchTermLower) ||
             c.Email.ToLowerInvariant().Contains(searchTermLower) ||
@@ -118,6 +118,6 @@ public class CandidateService : ICandidateService
             c.SpokenLanguages.Any(lang => lang.ToLowerInvariant().Contains(searchTermLower))
         ).ToList();
 
-        return matchingCandidates;
+        return matchingEmployees;
     }
 }

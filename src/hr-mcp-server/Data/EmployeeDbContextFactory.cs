@@ -4,9 +4,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace HRMCPServer.Data;
 
-public class CandidateDbContextFactory : IDesignTimeDbContextFactory<CandidateDbContext>
+public class EmployeeDbContextFactory : IDesignTimeDbContextFactory<EmployeeDbContext>
 {
-    public CandidateDbContext CreateDbContext(string[] args)
+    public EmployeeDbContext CreateDbContext(string[] args)
     {
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
@@ -15,12 +15,12 @@ public class CandidateDbContextFactory : IDesignTimeDbContextFactory<CandidateDb
             .AddEnvironmentVariables()
             .Build();
 
-        var connectionString = configuration.GetConnectionString("CandidateDatabase")
-            ?? throw new InvalidOperationException("Connection string 'CandidateDatabase' not found.");
+        var connectionString = configuration.GetConnectionString("EmployeeDatabase")
+            ?? throw new InvalidOperationException("Connection string 'EmployeeDatabase' not found.");
 
-        var optionsBuilder = new DbContextOptionsBuilder<CandidateDbContext>();
+        var optionsBuilder = new DbContextOptionsBuilder<EmployeeDbContext>();
         optionsBuilder.UseSqlServer(connectionString);
 
-        return new CandidateDbContext(optionsBuilder.Options);
+        return new EmployeeDbContext(optionsBuilder.Options);
     }
 }
