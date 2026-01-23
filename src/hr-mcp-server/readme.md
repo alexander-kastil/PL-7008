@@ -37,12 +37,13 @@ Verify the Azure deployment is operational:
    npx @modelcontextprotocol/inspector --config inspector.config.json --server hr-mcp-azure-dev
    ```
 
-2. Confirm in the browser inspector that all **4 tools** are listed and accessible:
-   - `ListEmployees` – retrieves all employees
-   - `AddEmployee` – adds a new employee with optional languages and skills
-   - `UpdateEmployee` – updates an existing employee by email
-   - `DeleteEmployee` – removes an employee by email
+2. Confirm in the browser inspector that all **5 tools** are listed and accessible:
+   - `list_employees` – retrieves all employees
+   - `add_employee` – adds a new employee with optional languages and skills
+   - `update_employee` – updates an existing employee by email
+   - `remove_employee` – removes an employee by email
+   - `search_employees` – searches for employees by name, email, skills, or current role
 
-3. Call `ListEmployees` tool and verify the response contains the seeded employee data with proper JSON structure.
+3. Call `list_employees` tool and verify the response contains the seeded employee data with proper JSON structure.
 
-4. If all tools are present and `ListEmployees` returns data, the deployment is healthy.
+4. If all tools are present and `list_employees` returns data, the deployment is healthy.
