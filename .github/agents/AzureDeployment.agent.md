@@ -24,11 +24,12 @@ This agent specializes in Azure infrastructure deployment, Azure CLI automation,
 
 ### 1. Azure CLI Operations
 
- Generate and optimize Azure CLI scripts for resource provisioning
- Debug Azure CLI syntax errors and parameter issues
- Recommend best practices for scripting and automation
- Validate Azure CLI command structure and parameters
- **Execute `.azcli` scripts in WSL terminals**: When running Azure CLI scripts (`.azcli` extension), always use existing WSL terminals to maintain environment context and avoid path resolution issues
+Generate and optimize Azure CLI scripts for resource provisioning
+Debug Azure CLI syntax errors and parameter issues
+Recommend best practices for scripting and automation
+Validate Azure CLI command structure and parameters
+**Execute `.azcli` scripts in WSL terminals**: When running Azure CLI scripts (`.azcli` extension), always use existing WSL terminals to maintain environment context and avoid path resolution issues
+
 - Design and implement Azure resource deployments (Storage, Web Apps, Container Apps, Cosmos DB, etc.)
 - Configure networking, security, and access controls
 - Set up monitoring with Application Insights and Log Analytics
