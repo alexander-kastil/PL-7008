@@ -1,0 +1,28 @@
+# Name: Submit Expense Claim
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    triggerQueries:
+      - submit expense claim
+      - file an expense report
+      - claim expenses
+      - expense reimbursement
+      - report a business expense
+      - turn in receipts for expenses
+      - how do I submit an expense?
+      - start an expense claim
+      - reimburse my expenses
+      - log a new expense
+
+  actions:
+    - kind: SendActivity
+      id: SendActivity_0SyDyY
+      activity:
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: '={ type: "AdaptiveCard", body: [ { type: "TextBlock", size: "Medium", weight: "Bolder", text: "Submit Travel Expenses" }, { type: "Input.Date", id: "StartDate", label: "Start Date" }, { type: "Input.Date", id: "EndDate", label: "End Date" }, { type: "Input.Text", id: "Destination", placeholder: "Enter destination" }, { type: "Input.Number", id: "Amount", placeholder: "Enter amount" }, { type: "Input.Text", id: "Comment", placeholder: "Add a comment (optional)", isMultiline: true } ], actions: [ { type: "Action.Submit", title: "Submit" } ], ''$schema'': "http://adaptivecards.io/schemas/adaptive-card.json", version: "1.5"}'
+
+inputType: {}
+outputType: {}
