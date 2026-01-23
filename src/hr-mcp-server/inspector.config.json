@@ -7,7 +7,7 @@
         },
         "hr-mcp-azure-dev": {
             "type": "streamable-http",
-            "url": "https://hr-mcp-server-dev.azurewebsites.net",
+            "url": "https://human-resource-mcp-pl7008.azurewebsites.net",
             "note": "Dev deployment hosted on Azure App Service"
         }
     }
