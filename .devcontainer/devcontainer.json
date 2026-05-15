@@ -1,0 +1,28 @@
+{
+  "name": "pl-7008",
+  "image": "mcr.microsoft.com/dotnet/sdk:10.0",
+  "features": {
+    "ghcr.io/devcontainers/features/powershell:1": {}
+  },
+  "forwardPorts": [
+    5000,
+    47002
+  ],
+  "remoteUser": "root",
+  "containerEnv": {
+    "DOTNET_SKIP_FIRST_TIME_EXPERIENCE": "1",
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+    "ASPNETCORE_ENVIRONMENT": "Development"
+  },
+  "mounts": [
+    "type=cache,target=/root/.nuget/packages"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-vscode.powershell"
+      ]
+    }
+  }
+}

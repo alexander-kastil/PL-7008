@@ -1,0 +1,40 @@
+# Get started with Microsoft Copilot Studio
+
+- Signing in and using trial environments
+- Understanding environments and the home page
+- Using built‑in templates
+- Agent creation approaches:
+  - Create an empty agent
+  - Create agents using natural language descriptions
+  - Create agents from templates
+- Agent configuration:
+  - Naming, icons, descriptions, instructions, and language
+  - Advanced settings (solutions and schema names)
+- Conversational AI fundamentals:
+  - Natural Language Understanding (NLU)
+  - Natural Language Processing (NLP) concepts
+  - Intents, tokenization, training, and language models
+- Generative AI features in Copilot Studio:
+  - Generative answers
+  - AI general knowledge
+  - Authoring topics with natural language
+  - Generative actions and fallback behavior
+- Knowledge and grounding sources:
+  - Public websites
+  - SharePoint and OneDrive
+  - Dataverse
+  - File uploads
+  - Microsoft Copilot connectors
+- Testing and monitoring agents:
+  - Test pane usage
+  - Tracking conversation paths
+  - Analytics and performance insights
+- Publishing and deployment:
+  - Publishing agents
+  - Sharing with collaborators
+  - Demo websites
+  - Microsoft Teams channel
+- Demos, labs, and assessments:
+  - Live and fallback demos
+  - Practice labs
+  - Knowledge checks and module recap

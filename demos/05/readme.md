@@ -1,0 +1,21 @@
+# Creating an agent using Microsoft Copilot Studio with Dataverse for Teams
+
+- Publishing and testing agents:
+  - Using the test panel (conversation tracking, reset, debugging)
+  - Publishing agents to make them shareable and available on channels
+- Sharing agents:
+  - Collaborative authoring and testing
+  - Sharing via Copilot Studio settings
+- Demo website:
+  - Testing agents without a license
+  - Sharing a demo URL with users
+- Creating agents in Microsoft Teams:
+  - Installing and pinning the Copilot Studio Teams app
+  - Team-based ownership and access control
+- Deploying agents to Teams:
+  - Enabling the Teams channel
+  - Customizing agent appearance (icon, color, description)
+- Installation options for Teams:
+  - Share link
+  - Teams app store ("Built by your colleagues")
+  - Downloadable package

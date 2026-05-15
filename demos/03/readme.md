@@ -1,0 +1,22 @@
+# Working with entities in agent conversations
+
+- Role of natural language understanding (NLU)
+- Purpose and value of entities
+- Prebuilt entities
+  - Common entity types (person, location, numbers, dates, colors)
+- Using entities in topics
+  - Identifying entities in question nodes
+  - Extracting and storing user input as variables
+- Closed list entities
+  - Selecting allowed values
+  - Using synonyms and smart matching
+- Custom entities
+  - When and why to create them
+  - Entity types: closed list and regular expression
+- Regular expression (regex) entities
+  - Pattern-based extraction and validation
+  - Common use cases (IDs, emails, structured text)
+- Variables in Copilot Studio
+  - Automatic variable creation from questions
+  - Renaming and managing variables
+- Using variables in conversations

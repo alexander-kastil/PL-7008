@@ -1,0 +1,12 @@
+{
+    "servers": {
+        "devcontainers": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "-y",
+                "@crunchloop/mcp-devcontainers"
+            ]
+        }
+    }
+}
